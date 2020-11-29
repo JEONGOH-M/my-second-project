@@ -43,16 +43,23 @@ public class UserRegisterServlet extends HttpServlet {
 		}
 		//여기까지 함수가 종료되지 않았다면 성공적으로 회원가입이 완료되어 회원 정보를 받은 것이기 때믄에 register함수 실행
 		int result = new userDAO().register(userID, userPassword1, userName, userNumber, userAge, userGender, userEmail);
-		if(result == 1) {
+		int result2 = new userDAO(). userNumberCheck(userNumber);
+		if(result == 1 && result2 == 0) {
 			request.getSession().setAttribute("messageType", "성공 메세지");
 			request.getSession().setAttribute("messageContent", "회원가입에 성공했습니다."); //알림메세지
 			response.sendRedirect("index.jsp");
 			System.out.println("입력성공");
 			return;
 		}
-		else {
+		else if(result == -1 ) {
 				request.getSession().setAttribute("messageType", "오류 메시지");
-				request.getSession().setAttribute("messageContent", "이미 존재하는 회원입니다."); //알림메세지
+				request.getSession().setAttribute("messageContent", "중복체크를 완료해주세요."); //알림메세지
+				response.sendRedirect("index.jsp");
+				return;
+		}
+		else{
+				request.getSession().setAttribute("messageType", "오류 메시지");
+				request.getSession().setAttribute("messageContent", "학번인증을 완료해주세요."); //알림메세지
 				response.sendRedirect("index.jsp");
 				return;
 		}

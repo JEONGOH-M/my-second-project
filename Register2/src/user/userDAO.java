@@ -31,10 +31,40 @@ public class userDAO {
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			if (rs.next() || userID.equals("")) { //결과가 이미 존재한다면
+				return 0; // 이미 존재하는 회원 ID이거나 입력하지 않을 경우
+				
+			} else {
+				return 1; // 가입 가능한 회원 아이디
+			}
+		} catch (Exception e) { 	
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) 
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return -1; // 데이터 베이스 오류
+	}
+	
+	public int userNumberCheck(String userNumber) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String SQL = "SELECT * FROM studentNumber WHERE userNumber = ?";
+
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userNumber);
 			
 			rs = pstmt.executeQuery();
 			
-			if (rs.next() || userID.equals("")) {
+			if (rs.next() || userNumber.equals("")) {
 				
 				return 0; // 이미 존재하는 회원 ID이거나 입력하지 않을 경우
 				

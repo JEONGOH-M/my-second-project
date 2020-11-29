@@ -23,7 +23,5 @@ public class UserRegisterCheckServlet extends HttpServlet {
 		//registerCheck는 숫자로 반환되기 때문에 공백문자를 넣어서 문자열 형태가 wite문으로 출력되게 만들어줌
 		//서블릿으로 어떠한 요청을 AJAX로 보내면 출력되는 형태임
 		//클라이언트는 출력된 결과를 result에 담아서 1인경우 사용, 아닌경우 사용불가로 처리
-		
-		
 	}
 }
