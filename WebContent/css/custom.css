@@ -1,0 +1,25 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+* {
+	font-family : 'Nanum Gothic';
+}
+
+h1 {
+	font-family : 'Hanna';
+}
+
+.navbar .navbar-default {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+
+}
+@media (min-width: 768px) {
+  .navbar-header {
+    float: left;
+  }
+}
+
+.navbar-toggle collapsed{
+	
+}

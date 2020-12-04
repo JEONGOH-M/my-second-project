@@ -1,0 +1,12 @@
+td{
+	padding:20px;
+	border-bottom:1px solid #ccc;
+	align-items:center;
+}
+table{
+	margin:auto;
+}
+
+td:hover{
+	background-color:#d49466;
+}
